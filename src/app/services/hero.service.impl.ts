@@ -1,13 +1,13 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from './message.service';
 import { Observable, catchError, map, of, tap } from 'rxjs';
+import { MessageService } from './message.service';
 import { Hero } from '../interfaces/hero';
 import { HeroService } from './hero.service';
+import { HttpService } from './http.service';
 
 export class HeroServiceImpl extends HeroService {
   private heroesUrl = 'api/heroes'; // URL to web api
 
-  constructor(private http: HttpClient, messageService: MessageService) {
+  constructor(private http: HttpService, messageService: MessageService) {
     super(messageService);
   }
 

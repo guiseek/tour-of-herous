@@ -20,6 +20,7 @@ import {
   MessageService,
   MessageServiceImpl,
 } from './services';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   imports: [
@@ -45,13 +46,17 @@ import {
   ],
   providers: [
     {
+      provide: HttpService,
+      useClass: HttpClient,
+    },
+    {
       provide: MessageService,
       useClass: MessageServiceImpl,
     },
     {
       provide: HeroService,
       useClass: HeroServiceImpl,
-      deps: [HttpClient, MessageService],
+      deps: [HttpService, MessageService],
     },
   ],
   bootstrap: [AppComponent],
